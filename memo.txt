@@ -1,3 +1,6 @@
+[Site]
+http://qiita.com/kaki_k/items/7b178ad39394a031b50d
+
 [Install virtualenv and Django]
 01. pip install virtualenv
 02. cd {workdir}
@@ -20,10 +23,13 @@
         3) Script: {virtualenv_dir}\manage.py
         4) Script parameters: runserver 8000
         5) Python interpreter: virtualenv's pyhthon.exe
-08. git init, add, initial commit
-09. python manage.py migrate
-10. python manage.py createsuperuser
-11. python manage.py runserver
+08. python manage.py migrate
+09. python manage.py createsuperuser
+10. python manage.py runserver
+11. git init, add, initial commit
+12. Make a github repository (https://github.com/palodinico/python_mybook2.git)
+13. Add a remote by [ git remote add origin https://github.com/palodinico/python_mybook2.git]
+14. git push origin master
 
 [Add a new application]
 01. python manage.py startapp cms
