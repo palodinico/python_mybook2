@@ -1,6 +1,14 @@
-(p) - pyCharm
+[Install virtualenv and Django]
+01. pip install virtualenv
+02. cd {workdir}
+03. virtualenv env1
+04. cd env1
+05. Script\activate
+06. pip install django=1.7.1
+07. pip freeze -l
 
-01. python manage.py startproject mybook2
+[Project initial setting] (p) - pyCharm
+01. django-admin startproject mybook2
 02. (p) open directory
 03. (p) Setting: Editor/File encodings/IDE Encoding = UTF-8
 04. (p) Setting: Editor/File encodings/Project Encoding = UTF-8
@@ -13,3 +21,15 @@
         4) Script parameters: runserver 8000
         5) Python interpreter: virtualenv's pyhthon.exe
 08. git init, add, initial commit
+09. python manage.py migrate
+10. python manage.py createsuperuser
+11. python manage.py runserver
+
+[Add a new application]
+01. python manage.py startapp cms
+02. Add this new application in INSTALL_APPS in mybook/settings.py
+03. Modify LANGUAGE_CODE='ja' & TIME_ZONE='Asia/Tokyo'
+03. Add models in cms/models.py
+04. Make a migration file by [python manage.py makemigrations cms]
+05. Check the SQL of the migration file by [python manage.py sqlmigrate cms 0001]
+06. Exec the migration file by [python manage.py migrate]
