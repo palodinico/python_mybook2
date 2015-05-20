@@ -1,0 +1,15 @@
+(p) - pyCharm
+
+01. python manage.py startproject mybook2
+02. (p) open directory
+03. (p) Setting: Editor/File encodings/IDE Encoding = UTF-8
+04. (p) Setting: Editor/File encodings/Project Encoding = UTF-8
+05. (p) Setting: Project:mybook2/Project Interpreters = [virtualenv's pyhthon.exe]
+06. (p) run virtualenv's Script\activate on Terminal
+07. (p) Run:Edit Configurations.
+        1) Push +.
+        2) Add a new item in python.
+        3) Script: {virtualenv_dir}\manage.py
+        4) Script parameters: runserver 8000
+        5) Python interpreter: virtualenv's pyhthon.exe
+08. git init, add, initial commit
