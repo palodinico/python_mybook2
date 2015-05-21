@@ -89,4 +89,12 @@ http://qiita.com/kaki_k/items/7b178ad39394a031b50d
             return render_to_response('cms/book_list.html',
                                       {'book':books},
                                       context_instance=RequestContext(request))
-04. make template html at [cms/templates/cms/book_list.html]
+04. make template html at [cms/templates/base.html]
+    make template html at [cms/templates/cms/book_list.html]
+05. add a form to add/edit a book [cms/forms.py]
+    ex)
+    class BookForm(ModelForm):
+        class Meta:
+            model = Book
+            fields = ('name', 'publisher', 'author', 'page',)
+06. make template html at [cms/templates/cms/book_edit.html]
