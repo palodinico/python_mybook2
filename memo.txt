@@ -51,3 +51,14 @@ http://qiita.com/kaki_k/items/7b178ad39394a031b50d
         list_display = ('id', 'name', ...)
         list_display_links = ('id', 'name', ...)
     admin.site.register(Book, BookAdmin)
+
+[Add bootstrup and jquery files]
+01. make dir[mybooks/static]
+02. add files to the dir
+03. add STATICFILES_DIRS to mybook2/settings.py
+    ex)
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static')
+    )
+04. pip install django-bootstrap-form
+05. add bootstrapform to INSTALLED_APPS in mybook2/settings.py
