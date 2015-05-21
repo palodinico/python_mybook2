@@ -39,3 +39,15 @@ http://qiita.com/kaki_k/items/7b178ad39394a031b50d
 04. Make a migration file by [python manage.py makemigrations cms]
 05. Check the SQL of the migration file by [python manage.py sqlmigrate cms 0001]
 06. Exec the migration file by [python manage.py migrate]
+
+[Admin page]
+01. http://127.0.0.1:8000/admin/
+02. Add cms models to cms/admin.py
+    admin.site.register(Book)
+    admin.site.register(Impression)
+03. Modify ModelAmdmin to cms/admin.py
+    ex)
+    class BookAmdmin(admin.ModelAdmin):
+        list_display = ('id', 'name', ...)
+        list_display_links = ('id', 'name', ...)
+    admin.site.register(Book, BookAdmin)
