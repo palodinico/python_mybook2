@@ -62,3 +62,23 @@ http://qiita.com/kaki_k/items/7b178ad39394a031b50d
     )
 04. pip install django-bootstrap-form
 05. add bootstrapform to INSTALLED_APPS in mybook2/settings.py
+
+[Add Django CRUD]
+01. make views in cms/views.php
+    ex1)
+        def book_list(request):
+        return HttpResponse(u'書籍の一覧')
+    ex2)
+        def book_edit(request, book_id=None):
+        return HttpResponse(u'書籍の編集')
+02. make url scheme
+        1) make cms/urls.php
+        2) add scheme
+            ex) url(r'/^book/$', views.book_list, name="book_list"),
+        3) include cms/urls.py from mybook2/urls.py
+            ex) url(r'^cms/', include('cms.urls', namespace='cms')),
+        4) check the urls by browers
+               http://127.0.0.1:8000/cms/book/
+               http://127.0.0.1:8000/cms/book/add/
+               http://127.0.0.1:8000/cms/book/mod/1/
+               http://127.0.0.1:8000/cms/book/del/1/
