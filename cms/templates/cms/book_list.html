@@ -44,6 +44,7 @@ table {
                             url="{% url 'cms:book_del' book_id=book.id %}"
                             class="btn btn-default btn-sm del_confirm"
                             data-toggle="modal" data-target="#deleteModal" pk="{{ book.id }}. {{ book.name }}">削除</button>
+                    <a href="{% url 'cms:impression_list' book_id=book.id %}" class="btn btn-default btn-sm btn-primary">感想の一覧</a>
                 </td>
             </tr>
             {% endfor %}
