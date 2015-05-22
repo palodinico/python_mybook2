@@ -6,12 +6,17 @@ from django.views.generic.list import ListView
 from cms.forms import BookForm, ImreppsionForm
 from cms.models import Book, Impression
 
-def book_list(request):
+class BookList(ListView):
     '''書籍の一覧'''
-    books = Book.objects.all().order_by('id')
-    return render_to_response('cms/book_list.html',
-                              {'books':books},
-                              context_instance=RequestContext(request))
+    context_object_name = 'books'
+    template_name = 'cms/book_list.html'
+    paginate_by = 5
+
+    def get(self, request, *args, **kwargs):
+        books = Book.objects.all().order_by('id')
+        self.object_list = books
+        context = self.get_context_data(object_list=self.object_list)
+        return self.render_to_response(context)
 
 def book_edit(request, book_id=None):
     '''書籍の編集'''
