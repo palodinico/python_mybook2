@@ -82,3 +82,15 @@ def impression_del(request, book_id, impression_id):
     impression = get_object_or_404(Impression, pk=impression_id)
     impression.delete()
     return redirect('cms:impression_list', book_id=book_id)
+
+def publisher_list(request):
+    '''出版社の一覧'''
+    return HttpResponse(u'出版社の一覧')
+
+def publisher_edit(request, publisher_id=None):
+    '''出版社の編集'''
+    return HttpResponse(u'出版社の編集')
+
+def publisher_del(request, publisher_id):
+    '''出版社の削除'''
+    return HttpResponse(u'出版社の削除')
