@@ -14,4 +14,11 @@ urlpatterns = patterns('',
     url(r'^impression/add/(?P<book_id>\d+)/$', views.impression_edit, name='impression_add'),
     url(r'^impression/mod/(?P<book_id>\d+)/(?P<impression_id>\d+)/$', views.impression_edit, name='impression_mod'),
     url(r'^impression/del/(?P<book_id>\d+)/(?P<impression_id>\d+)/$', views.impression_del, name='impression_del'),
+
+    #出版社
+    url(r'publisher/$', views.publisher_list, name='publisher_list'),
+    url(r'^publisher/add/$', views.publisher_edit, name='publisher_add'),
+    url(r'^publisher/mod/(?P<publisher_id>\d+)/$', views.publisher_edit, name='publisher_mod'),
+    url(r'^publisher/del/(?P<publisher_id>\d+)/$', views.publisher_del, name='publisher_del'),
+
 )
