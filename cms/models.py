@@ -26,6 +26,8 @@ class Book(models.Model):
     page = models.IntegerField(u'ページ数', blank=True, default = 0)
     publisher = models.ForeignKey(Publisher, verbose_name=u'出版社', related_name='publishers', blank=True, default=None)
     author = models.ForeignKey(Author, verbose_name=u'著者', related_name='authors', blank=True, default=None)
+    create = models.DateTimeField(auto_now_add=True, default=datetime.now())
+    update = models.DateTimeField(auto_now=True, default=datetime.now())
 
     def __str__(self):
         return self.name
