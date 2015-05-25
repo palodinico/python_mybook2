@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.views.generic.list import ListView
-from cms.forms import BookForm, ImreppsionForm
+from cms.forms import BookForm, ImreppsionForm, PublisherForm
 from cms.models import Book, Impression, Publisher
 
 class BookList(ListView):
@@ -84,7 +84,7 @@ def impression_del(request, book_id, impression_id):
     return redirect('cms:impression_list', book_id=book_id)
 
 class PublisherList(ListView):
-    '''書籍の一覧'''
+    '''出版社の一覧'''
     context_object_name = 'publishers'
     template_name = 'cms/publisher_list.html'
     paginate_by = 5
@@ -97,7 +97,22 @@ class PublisherList(ListView):
 
 def publisher_edit(request, publisher_id=None):
     '''出版社の編集'''
-    return HttpResponse(u'出版社の編集')
+    if publisher_id:
+        publisher = get_object_or_404(Publisher, pk=publisher_id)
+    else:
+        publisher = Publisher()
+    if request.method == 'POST':
+        form = PublisherForm(request.POST, instance=publisher)
+        if form.is_valid():
+            publisher = form.save(commit=False)
+            publisher.save()
+            return redirect('cms:publisher_list')
+    else:
+        form = PublisherForm(instance=publisher)
+
+    return render_to_response('cms/publisher_edit.html',
+                              dict(form=form, publisher_id=publisher_id),
+                              context_instance=RequestContext(request))
 
 def publisher_del(request, publisher_id):
     '''出版社の削除'''
