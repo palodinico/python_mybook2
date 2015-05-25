@@ -14,6 +14,8 @@ class Author(models.Model):
 class Publisher(models.Model):
     '''出版社'''
     name = models.CharField(u'出版社名', max_length=255)
+    create = models.DateTimeField(auto_now_add=True, default=datetime.now())
+    update = models.DateTimeField(auto_now=True, default=datetime.now())
 
     def __str__(self):
         return self.name
