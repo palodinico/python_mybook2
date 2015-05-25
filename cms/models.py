@@ -34,6 +34,8 @@ class Impression(models.Model):
     '''感想'''
     book = models.ForeignKey(Book, verbose_name=u'書籍', related_name='impressions')
     comment = models.TextField(u'コメント', blank=True)
+    create = models.DateTimeField(auto_now_add=True, default=datetime.now())
+    update = models.DateTimeField(auto_now=True, default=datetime.now())
 
     def __str__(self):
         return self.comment
