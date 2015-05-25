@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.views.generic.list import ListView
 from cms.forms import BookForm, ImreppsionForm
-from cms.models import Book, Impression
+from cms.models import Book, Impression, Publisher
 
 class BookList(ListView):
     '''書籍の一覧'''
@@ -83,9 +83,17 @@ def impression_del(request, book_id, impression_id):
     impression.delete()
     return redirect('cms:impression_list', book_id=book_id)
 
-def publisher_list(request):
-    '''出版社の一覧'''
-    return HttpResponse(u'出版社の一覧')
+class PublisherList(ListView):
+    '''書籍の一覧'''
+    context_object_name = 'publishers'
+    template_name = 'cms/publisher_list.html'
+    paginate_by = 5
+
+    def get(self, request, *args, **kwargs):
+        publishers = Publisher.objects.all().order_by('id')
+        self.object_list = publishers
+        context = self.get_context_data(object_list=self.object_list)
+        return self.render_to_response(context)
 
 def publisher_edit(request, publisher_id=None):
     '''出版社の編集'''
