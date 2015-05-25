@@ -116,4 +116,6 @@ def publisher_edit(request, publisher_id=None):
 
 def publisher_del(request, publisher_id):
     '''出版社の削除'''
-    return HttpResponse(u'出版社の削除')
+    publisher = get_object_or_404(Publisher, pk=publisher_id)
+    publisher.delete()
+    return redirect('cms:publisher_list')
