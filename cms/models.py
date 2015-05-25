@@ -1,9 +1,12 @@
 from django.db import models
+from datetime import datetime
 
 class Author(models.Model):
     '''著者'''
     first_name = models.CharField(u'著者名', max_length=255, default=None)
     family_name = models.CharField(u'著者性', max_length=255, default=None)
+    create = models.DateTimeField(auto_now_add=True, default=datetime.now())
+    update = models.DateTimeField(auto_now=True, default=datetime.now())
 
     def __str__(self):
         return self.family_name + ' ' + self.first_name
