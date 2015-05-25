@@ -51,7 +51,7 @@ class ImpressionList(ListView):
 
     def get(self, request, *args, **kwargs):
         book = get_object_or_404(Book, pk=kwargs['book_id'])
-        impressions = book.impressions.all().order_by('id')
+        impressions = book.impressions.all().order_by('-update', 'id')
         self.object_list = impressions
         context = self.get_context_data(object_list=self.object_list, book=book)
         return self.render_to_response(context)

@@ -26,6 +26,8 @@
             <tr>
                 <th>ID</th>
                 <th>コメント</th>
+                <th>作成日</th>
+                <th>更新日</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -34,6 +36,8 @@
             <tr>
                 <td>{{ impression.id }}</td>
                 <td>{{ impression.comment|linebreaksbr }}</td>
+                <td>{{ impression.create|date:"Y/m/d H:i:s" }}</td>
+                <td>{{ impression.update|date:"Y/m/d H:i:s" }}</td>
                 <td>
                     <a href="{% url 'cms:impression_mod' book_id=book.id impression_id=impression.id %}"
                        class="btn btn-default btn-sm">修正</a>
