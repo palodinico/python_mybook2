@@ -28,6 +28,8 @@ table {
                 <th>書籍名</th>
                 <th>出版社</th>
                 <th>ページ数</th>
+                <th>作成日</th>
+                <th>更新日</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -38,6 +40,8 @@ table {
                 <td>{{ book.name }}</td>
                 <td>{{ book.publisher }}</td>
                 <td>{{ book.page }}</td>
+                <td>{{ book.create|date:"Y/m/d H:i:s" }}</td>
+                <td>{{ book.update|date:"Y/m/d H:i:s" }}</td>
                 <td>
                     <a href="{% url 'cms:book_mod' book_id=book.id %}" class="btn btn-default btn-sm">修正</a>
                     <button

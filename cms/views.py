@@ -13,7 +13,7 @@ class BookList(ListView):
     paginate_by = 5
 
     def get(self, request, *args, **kwargs):
-        books = Book.objects.all().order_by('id')
+        books = Book.objects.all().order_by('-update', 'id')
         self.object_list = books
         context = self.get_context_data(object_list=self.object_list)
         return self.render_to_response(context)
