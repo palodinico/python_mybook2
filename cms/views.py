@@ -90,7 +90,7 @@ class PublisherList(ListView):
     paginate_by = 5
 
     def get(self, request, *args, **kwargs):
-        publishers = Publisher.objects.all().order_by('id')
+        publishers = Publisher.objects.all().order_by('-update', 'id')
         self.object_list = publishers
         context = self.get_context_data(object_list=self.object_list)
         return self.render_to_response(context)
