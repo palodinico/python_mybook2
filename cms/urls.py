@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import patterns, url
-from cms.views import book, impression, publisher, author
+from cms.views import book, impression, publisher, author, index
 
 urlpatterns = patterns('',
+    #トップページ
+    url(r'^$', index.Index.as_view(), name="index_page"),
+
     # 書籍
     url(r'^book/$', book.BookList.as_view(), name="book_list"),
     url(r'^book/add/$', book.book_edit, name="book_add"),
