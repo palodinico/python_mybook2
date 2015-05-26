@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm
-from cms.models import Book, Impression, Publisher
+from cms.models import Book, Impression, Publisher, Author
 
 class BookForm(ModelForm):
     '''書籍のフォーム'''
@@ -19,3 +19,9 @@ class PublisherForm(ModelForm):
     class Meta:
         model = Publisher
         fields = ('name',)
+
+class AuthorForm(ModelForm):
+    '''著者のフォーム'''
+    class Meta:
+        model = Author
+        fields = ('family_name', 'first_name',)
