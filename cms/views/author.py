@@ -5,18 +5,15 @@ from django.template import RequestContext
 from django.views.generic.list import ListView
 from cms.forms import AuthorForm
 from cms.models import Author
+from cms.views.base import BaseList
 
-class AuthorList(ListView):
+class AuthorList(BaseList):
     '''著者の一覧'''
     context_object_name = 'authors'
     template_name = 'cms/author_list.html'
-    paginate_by = 5
 
-    def get(self, request, *args, **kwargs):
-        authors = Author.objects.all().order_by('-update', 'id')
-        self.object_list = authors
-        context = self.get_context_data(object_list=self.object_list)
-        return self.render_to_response(context)
+    def refresh_object_list(self):
+        return Author.objects.all().order_by('-update', 'id')
 
 def author_edit(request, author_id=None):
     '''著者の編集'''
