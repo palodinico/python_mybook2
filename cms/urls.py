@@ -9,8 +9,8 @@ urlpatterns = patterns('',
     # 書籍
     url(r'^book/$', book.BookList.as_view(), name="book_list"),
     url(r'^book/add/$', book.book_edit, name="book_add"),
-    url(r'^book/mod/(?P<book_id>\d+)/$', book.book_edit, name="book_mod"),
-    url(r'^book/del/(?P<book_id>\d+)/$', book.book_del, name="book_del"),
+    url(r'^book/mod/(?P<pk>\d+)/$', book.book_edit, name="book_mod"),
+    url(r'^book/del/(?P<pk>\d+)/$', book.BookDelete.as_view(), name="book_del"),
 
     #感想
     url(r'^impression/(?P<book_id>\d+)/$', impression.ImpressionList.as_view(), name='impression_list'),
@@ -26,8 +26,8 @@ urlpatterns = patterns('',
 
     #著者
     url(r'^author/$', author.AuthorList.as_view(), name='author_list'),
-    url(r'^author/add/$', author.author_edit, name='author_add'),
-    url(r'^author/mod/(?P<author_id>\d+)/$', author.author_edit, name='author_mod'),
+    url(r'^author/add/$', author.AuthorEdit.as_view(), name='author_add'),
+    url(r'^author/mod/(?P<pk>\d+)/$', author.AuthorEdit.as_view(), name='author_mod'),
     url(r'^author/del/(?P<pk>\d+)/$', author.AuthorDelete.as_view(), name='author_del'),
 
 )

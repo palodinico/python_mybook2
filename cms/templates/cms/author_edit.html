@@ -5,8 +5,8 @@
 
 {% block content %}
     <h3 class="page-header">著者の編集</h3>
-    {% if author_id %}
-        <form action="{% url 'cms:author_mod' author_id=author_id %}" method="post" class="form-horizontal" role="form">
+    {% if pk %}
+        <form action="{% url 'cms:author_mod' pk=pk %}" method="post" class="form-horizontal" role="form">
     {% else %}
         <form action="{% url 'cms:author_add' %}" method="post" class="form-horizontal" role="form">
     {% endif %}

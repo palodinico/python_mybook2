@@ -5,18 +5,15 @@ from django.template import RequestContext
 from django.views.generic.list import ListView
 from cms.forms import BookForm
 from cms.models import Book
+from cms.views.base import BaseList, BaseDelete
 
-class BookList(ListView):
+class BookList(BaseList):
     '''書籍の一覧'''
     context_object_name = 'books'
     template_name = 'cms/book_list.html'
-    paginate_by = 5
 
-    def get(self, request, *args, **kwargs):
-        books = Book.objects.all().order_by('-update', 'id')
-        self.object_list = books
-        context = self.get_context_data(object_list=self.object_list)
-        return self.render_to_response(context)
+    def refresh_object_list(self):
+        return Book.objects.all().order_by('-update', 'id')
 
 def book_edit(request, book_id=None):
     '''書籍の編集'''
@@ -37,8 +34,6 @@ def book_edit(request, book_id=None):
                               dict(form=form, book_id=book_id),
                               context_instance=RequestContext(request))
 
-def book_del(request, book_id=None):
-    '''書籍の削除'''
-    book = get_object_or_404(Book, pk=book_id)
-    book.delete()
-    return redirect('cms:book_list')
+class BookDelete(BaseDelete):
+    redirect_view = 'cms:book_list'
+    object = Book

@@ -39,7 +39,7 @@ table {
                 <td>{{ author.create|date:"Y/m/d H:i:s" }}</td>
                 <td>{{ author.update|date:"Y/m/d H:i:s" }}</td>
                 <td>
-                    <a href="{% url 'cms:author_mod' author_id=author.id %}" class="btn btn-default btn-sm">修正</a>
+                    <a href="{% url 'cms:author_mod' pk=author.id %}" class="btn btn-default btn-sm">修正</a>
                     <button
                             url="{% url 'cms:author_del' pk=author.id %}"
                             class="btn btn-default btn-sm del_confirm"

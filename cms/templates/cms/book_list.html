@@ -43,9 +43,9 @@ table {
                 <td>{{ book.create|date:"Y/m/d H:i:s" }}</td>
                 <td>{{ book.update|date:"Y/m/d H:i:s" }}</td>
                 <td>
-                    <a href="{% url 'cms:book_mod' book_id=book.id %}" class="btn btn-default btn-sm">修正</a>
+                    <a href="{% url 'cms:book_mod' pk=book.id %}" class="btn btn-default btn-sm">修正</a>
                     <button
-                            url="{% url 'cms:book_del' book_id=book.id %}"
+                            url="{% url 'cms:book_del' pk=book.id %}"
                             class="btn btn-default btn-sm del_confirm"
                             data-toggle="modal" data-target="#deleteModal" pk="{{ book.id }}. {{ book.name }}">削除</button>
                     <a href="{% url 'cms:impression_list' book_id=book.id %}" class="btn btn-default btn-sm btn-primary">感想の一覧</a>
