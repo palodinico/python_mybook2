@@ -5,7 +5,8 @@ from django.template import RequestContext
 from django.views.generic.list import ListView
 from cms.forms import BookForm
 from cms.models import Book
-from cms.views.base import BaseList, BaseDelete
+from cms.views.base_list import BaseList
+from cms.views.base_delete import BaseDelete
 
 class BookList(BaseList):
     '''書籍の一覧'''

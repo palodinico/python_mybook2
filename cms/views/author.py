@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response, get_object_or_404, redirect
-from django.template import RequestContext
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.list import ListView
 from cms.forms import AuthorForm
 from cms.models import Author
-from cms.views.base import BaseList, BaseEdit, BaseDelete
+from cms.views.base_list import BaseList
+from cms.views.base_edit import BaseEdit
+from cms.views.base_delete import BaseDelete
 
 class AuthorList(BaseList):
     '''著者の一覧'''
@@ -14,11 +12,13 @@ class AuthorList(BaseList):
     object = Author
 
 class AuthorEdit(BaseEdit):
+    '''著者の編集'''
     template_name = 'cms/author_edit.html'
     redirect_view = 'cms:author_list'
     object = Author
     form_object = AuthorForm
 
 class AuthorDelete(BaseDelete):
+    '''著者の削除'''
     redirect_view = 'cms:author_list'
     object = Author
