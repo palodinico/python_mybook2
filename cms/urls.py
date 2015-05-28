@@ -20,9 +20,9 @@ urlpatterns = patterns('',
 
     #出版社
     url(r'^publisher/$', publisher.PublisherList.as_view(), name='publisher_list'),
-    url(r'^publisher/add/$', publisher.publisher_edit, name='publisher_add'),
-    url(r'^publisher/mod/(?P<publisher_id>\d+)/$', publisher.publisher_edit, name='publisher_mod'),
-    url(r'^publisher/del/(?P<publisher_id>\d+)/$', publisher.publisher_del, name='publisher_del'),
+    url(r'^publisher/add/$', publisher.PublisherEdit.as_view(), name='publisher_add'),
+    url(r'^publisher/mod/(?P<pk>\d+)/$', publisher.PublisherEdit.as_view(), name='publisher_mod'),
+    url(r'^publisher/del/(?P<pk>\d+)/$', publisher.PublisherDelete.as_view(), name='publisher_del'),
 
     #著者
     url(r'^author/$', author.AuthorList.as_view(), name='author_list'),

@@ -39,9 +39,9 @@ table {
                 <td>{{ publisher.create|date:"Y/m/d H:i:s" }}</td>
                 <td>{{ publisher.update|date:"Y/m/d H:i:s" }}</td>
                 <td>
-                    <a href="{% url 'cms:publisher_mod' publisher_id=publisher.id %}" class="btn btn-default btn-sm">修正</a>
+                    <a href="{% url 'cms:publisher_mod' pk=publisher.id %}" class="btn btn-default btn-sm">修正</a>
                     <button
-                            url="{% url 'cms:publisher_del' publisher_id=publisher.id %}"
+                            url="{% url 'cms:publisher_del' pk=publisher.id %}"
                             class="btn btn-default btn-sm del_confirm"
                             data-toggle="modal" data-target="#deleteModal" pk="{{ publisher.id }}. {{ publisher.name }}">削除</button>
                 </td>

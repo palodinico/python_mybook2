@@ -5,8 +5,8 @@
 
 {% block content %}
     <h3 class="page-header">出版社の編集</h3>
-    {% if publisher_id %}
-        <form action="{% url 'cms:publisher_mod' publisher_id=publisher_id %}" method="post" class="form-horizontal" role="form">
+    {% if pk %}
+        <form action="{% url 'cms:publisher_mod' pk=pk %}" method="post" class="form-horizontal" role="form">
     {% else %}
         <form action="{% url 'cms:publisher_add' %}" method="post" class="form-horizontal" role="form">
     {% endif %}
