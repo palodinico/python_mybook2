@@ -8,8 +8,8 @@ urlpatterns = patterns('',
 
     # 書籍
     url(r'^book/$', book.BookList.as_view(), name="book_list"),
-    url(r'^book/add/$', book.book_edit, name="book_add"),
-    url(r'^book/mod/(?P<pk>\d+)/$', book.book_edit, name="book_mod"),
+    url(r'^book/add/$', book.BookEdit.as_view(), name="book_add"),
+    url(r'^book/mod/(?P<pk>\d+)/$', book.BookEdit.as_view(), name="book_mod"),
     url(r'^book/del/(?P<pk>\d+)/$', book.BookDelete.as_view(), name="book_del"),
 
     #感想
