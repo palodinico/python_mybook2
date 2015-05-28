@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
+from django.views.generic import View
 from django.core.urlresolvers import reverse_lazy
 from cms.forms import AuthorForm
 from cms.models import Author
@@ -36,12 +37,8 @@ def author_edit(request, author_id=None):
                               dict(form=form, author_id=author_id),
                               context_instance=RequestContext(request))
 
-def author_del(request, author_id=None):
-    '''著者の削除'''
-    author = get_object_or_404(Author, pk=author_id)
-    author.delete()
-    return redirect('cms:author_list')
-
-class AuthorDelete(DeleteView):
-    model = Author
-    success_url = reverse_lazy('cms:author_list')
+class AuthorDelete(View):
+    def get(self, request, *args, **kwargs):
+        author = get_object_or_404(Author, pk=kwargs['pk'])
+        author.delete()
+        return redirect('cms:author_list')
