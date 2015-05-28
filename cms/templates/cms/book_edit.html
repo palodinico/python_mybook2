@@ -5,8 +5,8 @@
 
 {% block content %}
     <h3 class="page-header">書籍の編集</h3>
-    {% if book_id %}
-        <form action="{% url 'cms:book_mod' book_id=book_id %}" method="post" class="form-horizontal" role="form">
+    {% if pk %}
+        <form action="{% url 'cms:book_mod' pk=pk %}" method="post" class="form-horizontal" role="form">
     {% else %}
         <form action="{% url 'cms:book_add' %}" method="post" class="form-horizontal" role="form">
     {% endif %}
