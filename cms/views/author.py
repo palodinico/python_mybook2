@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
-from django.views.generic import View
-from django.core.urlresolvers import reverse_lazy
 from cms.forms import AuthorForm
 from cms.models import Author
-from cms.views.base import BaseList
+from cms.views.base import BaseList, BaseDelete
 
 class AuthorList(BaseList):
     '''著者の一覧'''
@@ -37,8 +34,6 @@ def author_edit(request, author_id=None):
                               dict(form=form, author_id=author_id),
                               context_instance=RequestContext(request))
 
-class AuthorDelete(View):
-    def get(self, request, *args, **kwargs):
-        author = get_object_or_404(Author, pk=kwargs['pk'])
-        author.delete()
-        return redirect('cms:author_list')
+class AuthorDelete(BaseDelete):
+    redirect_view = 'cms:author_list'
+    object = Author
