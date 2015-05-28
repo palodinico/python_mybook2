@@ -11,9 +11,7 @@ class AuthorList(BaseList):
     '''著者の一覧'''
     context_object_name = 'authors'
     template_name = 'cms/author_list.html'
-
-    def refresh_object_list(self):
-        return Author.objects.all().order_by('-update', 'id')
+    object = Author
 
 class AuthorEdit(BaseEdit):
     template_name = 'cms/author_edit.html'
