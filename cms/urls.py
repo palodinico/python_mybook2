@@ -28,6 +28,6 @@ urlpatterns = patterns('',
     url(r'^author/$', author.AuthorList.as_view(), name='author_list'),
     url(r'^author/add/$', author.author_edit, name='author_add'),
     url(r'^author/mod/(?P<author_id>\d+)/$', author.author_edit, name='author_mod'),
-    url(r'^author/del/(?P<author_id>\d+)/$', author.author_del, name='author_del'),
+    url(r'^author/del/(?P<pk>\d+)/$', author.AuthorDelete.as_view(), name='author_del'),
 
 )

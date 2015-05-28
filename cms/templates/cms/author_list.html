@@ -41,7 +41,7 @@ table {
                 <td>
                     <a href="{% url 'cms:author_mod' author_id=author.id %}" class="btn btn-default btn-sm">修正</a>
                     <button
-                            url="{% url 'cms:author_del' author_id=author.id %}"
+                            url="{% url 'cms:author_del' pk=author.id %}"
                             class="btn btn-default btn-sm del_confirm"
                             data-toggle="modal" data-target="#deleteModal" pk="{{ author.id }}. {{ author.family_name }} {{ author.first_name }}">削除</button>
                 </td>

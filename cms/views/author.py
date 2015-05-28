@@ -2,7 +2,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
+from django.core.urlresolvers import reverse_lazy
 from cms.forms import AuthorForm
 from cms.models import Author
 from cms.views.base import BaseList
@@ -39,3 +41,7 @@ def author_del(request, author_id=None):
     author = get_object_or_404(Author, pk=author_id)
     author.delete()
     return redirect('cms:author_list')
+
+class AuthorDelete(DeleteView):
+    model = Author
+    success_url = reverse_lazy('cms:author_list')
