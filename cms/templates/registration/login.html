@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load bootstrap %}
+{% load widget_tweaks %}
 
 {% block title %}ログイン・フォーム{% endblock title %}
 
@@ -24,14 +25,14 @@
         {% csrf_token %}
         <div class="form-group">
              {{ form.username.label_tag }}
-             {{ form.username }}
+             {% render_field form.username class+="form-control" %}
         </div>
         <div class="form-group">
             {{ form.password.label_tag }}
-            {{ form.password }}
+            {% render_field form.password class+="form-control" %}
         </div>
 
-        <input type="submit" value="login">
+        <button type="submit" class="btn btn-default" value="login">Submit</button>
         <input type="hidden" name="next" value="{{ next }}">
     </form>
 
