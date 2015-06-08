@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import patterns, url
+from django.contrib.auth.decorators import login_required
 from cms.views import book, impression, publisher, author, index
 
 urlpatterns = patterns('',
@@ -7,7 +8,7 @@ urlpatterns = patterns('',
     url(r'^$', index.Index.as_view(), name="index_page"),
 
     # 書籍
-    url(r'^book/$', book.BookList.as_view(), name="book_list"),
+    url(r'^book/$', login_required(book.BookList.as_view()), name="book_list"),
     url(r'^book/add/$', book.BookEdit.as_view(), name="book_add"),
     url(r'^book/mod/(?P<pk>\d+)/$', book.BookEdit.as_view(), name="book_mod"),
     url(r'^book/del/(?P<pk>\d+)/$', book.BookDelete.as_view(), name="book_del"),
@@ -19,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^impression/del/(?P<book_id>\d+)/(?P<impression_id>\d+)/$', impression.impression_del, name='impression_del'),
 
     #出版社
-    url(r'^publisher/$', publisher.PublisherList.as_view(), name='publisher_list'),
+    url(r'^publisher/$', login_required(publisher.PublisherList.as_view()), name='publisher_list'),
     url(r'^publisher/add/$', publisher.PublisherEdit.as_view(), name='publisher_add'),
     url(r'^publisher/mod/(?P<pk>\d+)/$', publisher.PublisherEdit.as_view(), name='publisher_mod'),
     url(r'^publisher/del/(?P<pk>\d+)/$', publisher.PublisherDelete.as_view(), name='publisher_del'),
