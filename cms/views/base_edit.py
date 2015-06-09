@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 from django.views.generic import View
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 class BaseEdit(View):
     template_name = None
@@ -14,6 +16,7 @@ class BaseEdit(View):
         else:
             return self.object()
 
+    @method_decorator(login_required(login_url='/login/'))
     def get(self, request, *args, **kwargs):
         instance_obj = self.get_instance(kwargs.get('pk'))
         form = self.form_object(instance=instance_obj)
