@@ -1,0 +1,10 @@
+branch-defaults:
+  add_auth:
+    environment: mybook2-dev
+global:
+  application_name: mybook2
+  default_ec2_keyname: null
+  default_platform: Python 3.4
+  default_region: us-west-2
+  profile: eb-cli
+  sc: git

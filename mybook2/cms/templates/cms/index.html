@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}トップページ{% endblock title %}
+
+{% block extrahead %}
+<style>
+table {
+    margin-top: 8px;
+}
+</style>
+{% endblock extrahead %}
+
+{% block content %}
+    <h3 class="page-header">トップページ</h3>
+    <ul>
+        <li><a href="{% url 'cms:book_list' %}" class="btn btn-default btn-sm">書籍一覧</a></li>
+        <li><a href="{% url 'cms:author_list' %}" class="btn btn-default btn-sm">著者一覧</a></li>
+        <li><a href="{% url 'cms:publisher_list' %}" class="btn btn-default btn-sm">出版社一覧</a></li>
+    </ul>
+{% endblock content %}
